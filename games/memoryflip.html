@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Flip - PlayPixl</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1f1c2c;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 80px);
+      grid-gap: 15px;
+    }
+
+    .card {
+      width: 80px;
+      height: 80px;
+      background-color: #4c3c88;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 2rem;
+      transition: background 0.3s ease;
+    }
+
+    .card.revealed {
+      background-color: #ff477e;
+    }
+
+    .card.matched {
+      background-color: #44c767;
+      pointer-events: none;
+    }
+
+    .message {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #ffb6d1;
+    }
+
+    .restart {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #ff477e;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 Memory Flip</h1>
+  <div class="grid" id="grid"></div>
+  <div class="message" id="message"></div>
+  <button class="restart" onclick="startGame()">Restart</button>
+
+  <script>
+    const icons = ["🐸", "🦄", "🐱", "🦕", "🐸", "🦄", "🐱", "🦕"];
+    let cards = [];
+    let flipped = [];
+    let matchedCount = 0;
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function startGame() {
+      const grid = document.getElementById("grid");
+      const message = document.getElementById("message");
+      grid.innerHTML = "";
+      message.textContent = "";
+      cards = [];
+      flipped = [];
+      matchedCount = 0;
+
+      const shuffled = [...icons];
+      shuffle(shuffled);
+
+      shuffled.forEach((icon, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.icon = icon;
+        card.dataset.index = index;
+        card.addEventListener("click", () => flipCard(card));
+        grid.appendChild(card);
+        cards.push(card);
+      });
+    }
+
+    function flipCard(card) {
+      if (flipped.length === 2 || card.classList.contains("revealed")) return;
+
+      card.classList.add("revealed");
+      card.textContent = card.dataset.icon;
+      flipped.push(card);
+
+      if (flipped.length === 2) {
+        const [card1, card2] = flipped;
+        if (card1.dataset.icon === card2.dataset.icon) {
+          card1.classList.add("matched");
+          card2.classList.add("matched");
+          matchedCount += 2;
+          flipped = [];
+          if (matchedCount === cards.length) {
+            document.getElementById("message").textContent = "🎉 You Win!";
+          }
+        } else {
+          setTimeout(() => {
+            card1.classList.remove("revealed");
+            card2.classList.remove("revealed");
+            card1.textContent = "";
+            card2.textContent = "";
+            flipped = [];
+          }, 1000);
+        }
+      }
+    }
+
+    startGame();
+  </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlayPixl - Tiny Games. Big Fun.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #ff477e;
+      --purple: #4c3c88;
+      --bg-dark: #1f1c2c;
+      --bg-light: #2c2a4a;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-dark);
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+    }
+
+    h1 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    p.tagline {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
+    }
+
+    a.button {
+      background-color: var(--pink);
+      padding: 1rem 2rem;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button:hover {
+      background-color: #ff6c9c;
+    }
+
+    .section {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .filters {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .filters button {
+      background: var(--bg-light);
+      border: none;
+      color: white;
+      padding: 0.6rem 1rem;
+      margin: 0.3rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .filters button:hover {
+      background: var(--pink);
+    }
+
+    .games-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .game-card {
+      background: var(--bg-light);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .game-card:hover {
+      transform: scale(1.03);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .game-card h3 {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .game-card a {
+      display: inline-block;
+      background: var(--pink);
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .coming-soon {
+      text-align: center;
+      font-style: italic;
+      color: #bbb;
+      margin-top: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #aaa;
+      padding: 1rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PlayPixl</h1>
+    <p class="tagline">Tiny Games. Big Fun.</p>
+    <a class="button" href="#games">Play Now</a>
+  </header>
+
+  <section class="section" id="games">
+    <div class="filters">
+
+    </div>
+
+    <div class="games-grid">
+      <div class="game-card">
+        <img src="https://ik.imagekit.io/g4ayll7qv/Logo%20Design.png?updatedAt=1748273167970" alt="Pixel Drop">
+        <h3>Memory Flip!</h3>
+        <a href="games/memoryflip.html">Play</a>
+      </div>
+
+      <div class="game-card">
+        <img src="https://ik.imagekit.io/g4ayll7qv/Coming%20Soon%20Logo.png?updatedAt=1748273357893" alt="Coming Soon!">
+        <h3>Coming Soon!</h3>
+        <a href="#">Play</a>
+      </div>
+
+      <div class="game-card">
+        <img src="https://ik.imagekit.io/g4ayll7qv/Coming%20Soon%20Logo.png?updatedAt=1748273357893" alt="Coming Soon!">
+        <h3>Coming Soon!</h3>
+        <a href="#">Play</a>
+      </div>
+
+      <div class="game-card">
+        <img src="https://ik.imagekit.io/g4ayll7qv/Coming%20Soon%20Logo.png?updatedAt=1748273357893" alt="Coming Soon!">
+        <h3>Coming Soon!</h3>
+        <a href="#">Play</a>
+      </div>
+    </div>
+
+    <div class="coming-soon">More games launching soon...</div>
+  </section>
+
+  <footer>
+    © 2025 PlayPixl. Powered by pixels and passion. <br>
+    <a href="mailto:hello@qwertyuni.site" style="color: #ffb6d1;">Contact Us</a>
+  </footer>
+</body>
+</html>
